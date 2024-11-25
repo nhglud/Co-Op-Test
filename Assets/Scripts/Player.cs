@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
     private float rotationSpeed = 5.0f;
     private float moveDistance;
     private bool isWalking;
-    private bool isPressed;
+    private bool interactionKeyIsPressed;
+    private bool isCarryingLight = false;
     private Vector3 lastMoveDir;
     Vector2 inputVector;
 
@@ -38,17 +39,17 @@ public class Player : MonoBehaviour
 
         if (playerNum == 1)
         {
-            isPressed = gameInputs.GetPlayer1Interact();
+            interactionKeyIsPressed = gameInputs.GetPlayer1Interact();
             
 
         }
         else
         {
-            isPressed = gameInputs.GetPlayer2Interact();
+            interactionKeyIsPressed = gameInputs.GetPlayer2Interact();
 
         }
 
-        if(isPressed)
+        if(interactionKeyIsPressed)
         {
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
 
@@ -56,13 +57,21 @@ public class Player : MonoBehaviour
             {
                 if(c.TryGetComponent(out LightSource lightSource))
                 {
-                    lightSource.Interact();
+                    if(!isCarryingLight)
+                    {
+                        lightSource.Interact(transform);
+                        isCarryingLight = true;
+                    }
+
+                    //if (isCarryingLight)
+                    //{
+                    //    lightSource.DropLight(transform);
+                    //    isCarryingLight = false;
+                    //}
                 }
             }
+
         }
-
-        //Physics.CapsuleCast(out RaycastHit racasthit);
-
 
     }
 

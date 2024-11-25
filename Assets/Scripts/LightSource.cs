@@ -1,15 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LightSource : MonoBehaviour
 {
+    BoxCollider boxCollider;
 
-
-    public void Interact()
+    public void Interact(Transform playerTransform)
     {
-      
-            Debug.Log("Derp");
+        transform.SetParent(playerTransform);
+
+        boxCollider = GetComponent<BoxCollider>();
+        boxCollider.enabled = false;
+
     }
+
+
+    public void DropLight(Transform playerTransform)
+    {
+        transform.SetParent(null);
+        boxCollider.enabled = true;
+
+    }
+
 
 }
