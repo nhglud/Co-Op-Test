@@ -23,6 +23,25 @@ public class Player : MonoBehaviour
     }
 
 
+    private void HandleInteraction()
+    {
+        if (playerNum == 1)
+        {
+            inputVector = gameInputs.GetPlayer1MovementVectorNormalized();
+
+        }
+        else
+        {
+            inputVector = gameInputs.GetPlayer2MovementVectorNormalized();
+
+        }
+
+
+    }
+
+
+
+
 
     private bool InContact(Vector3 moveDir)
     {

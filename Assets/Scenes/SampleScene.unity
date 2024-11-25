@@ -527,37 +527,37 @@ PrefabInstance:
     - target: {fileID: 6193110048409206376, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5428411
+      value: -0.7277482
       objectReference: {fileID: 0}
     - target: {fileID: 6193110048409206376, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.042856
+      value: 4.70369
       objectReference: {fileID: 0}
     - target: {fileID: 6193110048409206376, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.367291
+      value: -8.856363
       objectReference: {fileID: 0}
     - target: {fileID: 6193110048409206376, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.89878273
+      value: 0.8929908
       objectReference: {fileID: 0}
     - target: {fileID: 6193110048409206376, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.43839172
+      value: 0.4500281
       objectReference: {fileID: 0}
     - target: {fileID: 6193110048409206376, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0013519524
+      value: 0.0057999967
       objectReference: {fileID: 0}
     - target: {fileID: 6193110048409206376, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0006625876
+      value: -0.0029199014
       objectReference: {fileID: 0}
     - target: {fileID: 7443646393847769551, guid: afeb855e68592db45ba871fe30285433,
         type: 3}
@@ -618,6 +618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LightSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886548262196468926, guid: afeb855e68592db45ba871fe30285433,
+        type: 3}
+      propertyPath: m_Range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886548262196468926, guid: afeb855e68592db45ba871fe30285433,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
