@@ -20,8 +20,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        collider = GetComponent<CapsuleCollider>();
-       
+        collider = GetComponent<CapsuleCollider>();  
     }
 
     private void Update()
@@ -34,6 +33,23 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+
+        if (playerNum == 1)
+        {
+            inputVector = gameInputs.GetPlayer1MovementVectorNormalized();
+
+        }
+        else
+        {
+            inputVector = gameInputs.GetPlayer2MovementVectorNormalized();
+
+        }
+
+
+        var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+
+
+
         if (playerNum == 1)
         {
             isPressed = gameInputs.GetPlayer1Interact();
@@ -46,10 +62,11 @@ public class Player : MonoBehaviour
 
         }
 
-        if(isPressed)
-        {
-            Debug.Log("preseed");
-        }
+
+
+        Physics.CapsuleCast(transform.position, transform.position + Vector3.up * collider.height, collider.radius, moveDir, out RaycastHit raycastHit);
+
+
 
         //Physics.CapsuleCast(out RaycastHit racasthit);
 
