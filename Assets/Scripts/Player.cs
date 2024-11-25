@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private int playerNum = 1;
 
+
+    private const float INTERACTION_RANGE = 2f;
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 5.0f;
     private float moveDistance;
@@ -36,19 +38,6 @@ public class Player : MonoBehaviour
 
         if (playerNum == 1)
         {
-            inputVector = gameInputs.GetPlayer1MovementVectorNormalized();
-
-        }
-        else
-        {
-            inputVector = gameInputs.GetPlayer2MovementVectorNormalized();
-
-        }
-
-        var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
-
-        if (playerNum == 1)
-        {
             isPressed = gameInputs.GetPlayer1Interact();
             
 
@@ -59,10 +48,18 @@ public class Player : MonoBehaviour
 
         }
 
+        if(isPressed)
+        {
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
 
-        Physics.CapsuleCast(transform.position, transform.position + Vector3.up * collider.height, collider.radius, moveDir, out RaycastHit raycastHit);
-
-
+            foreach (var c in colliderArray)
+            {
+                if(c.TryGetComponent(out LightSource lightSource))
+                {
+                    lightSource.Interact();
+                }
+            }
+        }
 
         //Physics.CapsuleCast(out RaycastHit racasthit);
 
