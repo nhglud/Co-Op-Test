@@ -7,22 +7,29 @@ public class Player : MonoBehaviour
 
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 5.0f;
-    private float playerRadius = .6f;
-    private float playerHeight = 2f;
     private float moveDistance;
     private bool isWalking;
     private bool isPressed;
     private Vector3 lastMoveDir;
     Vector2 inputVector;
 
-    public bool IsWalking { get => isWalking; } 
-                                                
+    private CapsuleCollider collider;
+
+    public bool IsWalking { get => isWalking; }
+
+
+    private void Awake()
+    {
+        collider = GetComponent<CapsuleCollider>();
+       
+    }
 
     private void Update()
     {
         HandleMovement();
         HandleInteraction();
     }
+
 
 
     private void HandleInteraction()
@@ -44,8 +51,7 @@ public class Player : MonoBehaviour
             Debug.Log("preseed");
         }
 
-
-
+        //Physics.CapsuleCast(out RaycastHit racasthit);
 
 
     }
@@ -53,8 +59,8 @@ public class Player : MonoBehaviour
     private bool InContact(Vector3 moveDir)
     {
         return !Physics.CapsuleCast(transform.position,
-                                    transform.position + Vector3.up * playerHeight,
-                                    playerRadius,
+                                    transform.position + Vector3.up * collider.height,
+                                    collider.radius,
                                     moveDir,
                                     moveDistance);
     }
