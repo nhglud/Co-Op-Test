@@ -9,19 +9,25 @@ public class LightSource : MonoBehaviour
     private float lightDimmingRate = 0.13f;
     BoxCollider boxCollider;
 
+    private void Awake()
+    {
+        boxCollider = GetComponent<BoxCollider>();
+    }
 
     private void Update()
     {
-        light.intensity -= lightDimmingRate * Time.deltaTime;
-        light.range -= lightDimmingRate * Time.deltaTime;  
+        DimLight();
     }
 
-
+    private void DimLight()
+    {
+        light.intensity -= lightDimmingRate * Time.deltaTime;
+        light.range -= lightDimmingRate * Time.deltaTime;
+    }
 
     public void PickUpLight(Transform playerTransform)
     {
         transform.SetParent(playerTransform);
-        boxCollider = GetComponent<BoxCollider>();
         boxCollider.enabled = false;
     }
 

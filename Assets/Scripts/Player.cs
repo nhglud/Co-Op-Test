@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameInputs gameInputs;
     [SerializeField] private int playerNum = 1;
+    [SerializeField] private GameInputs gameInputs;
     [SerializeField] private LightSource lightSource;
 
     private const float INTERACTION_RANGE = 2f;
