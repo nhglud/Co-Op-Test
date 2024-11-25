@@ -4,7 +4,7 @@ public class LightSource : MonoBehaviour
 {
     BoxCollider boxCollider;
 
-    public void Interact(Transform playerTransform)
+    public void PickUpLight(Transform playerTransform)
     {
         transform.SetParent(playerTransform);
 

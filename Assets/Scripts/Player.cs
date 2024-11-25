@@ -5,7 +5,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private int playerNum = 1;
 
-
     private const float INTERACTION_RANGE = 2f;
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 5.0f;
@@ -14,7 +13,8 @@ public class Player : MonoBehaviour
     private bool interactionKeyIsPressed;
     private bool isCarryingLight = false;
     private Vector3 lastMoveDir;
-    Vector2 inputVector;
+    private Vector2 inputVector;
+    private LightSource lightSource;
 
     private CapsuleCollider collider;
 
@@ -33,45 +33,37 @@ public class Player : MonoBehaviour
     }
 
 
-
     private void HandleInteraction()
     {
+        interactionKeyIsPressed = playerNum == 1 ? gameInputs.GetPlayer1Interact() : gameInputs.GetPlayer2Interact();
 
-        if (playerNum == 1)
+        if(interactionKeyIsPressed & !isCarryingLight)
         {
-            interactionKeyIsPressed = gameInputs.GetPlayer1Interact();
-            
-
-        }
-        else
-        {
-            interactionKeyIsPressed = gameInputs.GetPlayer2Interact();
-
-        }
-
-        if(interactionKeyIsPressed)
-        {
+            Debug.Log("Key pressed");
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
 
             foreach (var c in colliderArray)
             {
-                if(c.TryGetComponent(out LightSource lightSource))
+                if(c.TryGetComponent(out lightSource))
                 {
                     if(!isCarryingLight)
                     {
-                        lightSource.Interact(transform);
+                        Debug.Log("Light picked up");
+                        lightSource.PickUpLight(transform);
                         isCarryingLight = true;
-                    }
-
-                    //if (isCarryingLight)
-                    //{
-                    //    lightSource.DropLight(transform);
-                    //    isCarryingLight = false;
-                    //}
+                    }    
                 }
             }
 
         }
+        else if (interactionKeyIsPressed & isCarryingLight)
+        {
+            Debug.Log("Light dropped");
+
+            lightSource.DropLight(transform);
+            isCarryingLight = false;
+        }
+
 
     }
 
@@ -86,19 +78,7 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-
-
-        if (playerNum == 1)
-        {
-            inputVector = gameInputs.GetPlayer1MovementVectorNormalized();
-
-        }
-        else
-        {
-            inputVector = gameInputs.GetPlayer2MovementVectorNormalized();
-
-        }
-
+        inputVector = playerNum == 1 ? gameInputs.GetPlayer1MovementVectorNormalized() : gameInputs.GetPlayer2MovementVectorNormalized();
 
         var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
 
