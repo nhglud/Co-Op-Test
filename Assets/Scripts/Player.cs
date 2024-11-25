@@ -45,10 +45,7 @@ public class Player : MonoBehaviour
 
         }
 
-
         var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
-
-
 
         if (playerNum == 1)
         {
@@ -61,7 +58,6 @@ public class Player : MonoBehaviour
             isPressed = gameInputs.GetPlayer2Interact();
 
         }
-
 
 
         Physics.CapsuleCast(transform.position, transform.position + Vector3.up * collider.height, collider.radius, moveDir, out RaycastHit raycastHit);
