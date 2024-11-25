@@ -15,9 +15,18 @@ public class GameInputs : MonoBehaviour
     }
 
 
-    public void GetPlayer1Interact()
+    public bool GetPlayer1Interact()
     {
+        return playerInputActions.Player1.Interact.triggered;
+
     }
+
+    public bool GetPlayer2Interact()
+    {
+        return playerInputActions.Player2.Interact.triggered;
+
+    }
+
 
 
     public Vector2 GetPlayer1MovementVectorNormalized()

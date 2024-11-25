@@ -20,7 +20,7 @@
                     "id": "48452b2c-f6f2-4390-9f6f-1fe49d04a346",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": true
                 }
             ],
@@ -175,7 +175,7 @@
                 {
                     "name": "",
                     "id": "92b6fd7c-b17f-4d89-9160-abe02f8ce5a0",
-                    "path": "<Keyboard>/0",
+                    "path": "<Keyboard>/numpad0",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

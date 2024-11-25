@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private float playerHeight = 2f;
     private float moveDistance;
     private bool isWalking;
+    private bool isPressed;
     private Vector3 lastMoveDir;
     Vector2 inputVector;
 
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+        HandleInteraction();
     }
 
 
@@ -27,21 +29,26 @@ public class Player : MonoBehaviour
     {
         if (playerNum == 1)
         {
-            inputVector = gameInputs.GetPlayer1MovementVectorNormalized();
+            isPressed = gameInputs.GetPlayer1Interact();
+            
 
         }
         else
         {
-            inputVector = gameInputs.GetPlayer2MovementVectorNormalized();
+            isPressed = gameInputs.GetPlayer2Interact();
 
         }
 
+        if(isPressed)
+        {
+            Debug.Log("preseed");
+        }
+
+
+
+
 
     }
-
-
-
-
 
     private bool InContact(Vector3 moveDir)
     {
