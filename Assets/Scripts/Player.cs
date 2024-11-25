@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private int playerNum = 1;
+    [SerializeField] private LightSource lightSource;
 
     private const float INTERACTION_RANGE = 2f;
     private float moveSpeed = 5.0f;
@@ -14,7 +15,6 @@ public class Player : MonoBehaviour
     private bool isCarryingLight = false;
     private Vector3 lastMoveDir;
     private Vector2 inputVector;
-    private LightSource lightSource;
 
     private CapsuleCollider collider;
 
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        collider = GetComponent<CapsuleCollider>();  
+        collider = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
@@ -32,40 +32,27 @@ public class Player : MonoBehaviour
         HandleInteraction();
     }
 
-
     private void HandleInteraction()
     {
         interactionKeyIsPressed = playerNum == 1 ? gameInputs.GetPlayer1Interact() : gameInputs.GetPlayer2Interact();
 
-        if(interactionKeyIsPressed & !isCarryingLight)
+        InteractWithLight();
+    }
+
+    private void InteractWithLight()
+    {
+        if (interactionKeyIsPressed && !isCarryingLight && Vector3.Distance(transform.position, lightSource.transform.position) < INTERACTION_RANGE)
         {
-            Debug.Log("Key pressed");
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
-
-            foreach (var c in colliderArray)
-            {
-                if(c.TryGetComponent(out lightSource))
-                {
-                    if(!isCarryingLight)
-                    {
-                        Debug.Log("Light picked up");
-                        lightSource.PickUpLight(transform);
-                        isCarryingLight = true;
-                    }    
-                }
-            }
-
+            lightSource.PickUpLight(transform);
+            isCarryingLight = true;
         }
-        else if (interactionKeyIsPressed & isCarryingLight)
+        else if (interactionKeyIsPressed && isCarryingLight)
         {
-            Debug.Log("Light dropped");
-
             lightSource.DropLight(transform);
             isCarryingLight = false;
         }
-
-
     }
+
 
     private bool InContact(Vector3 moveDir)
     {
@@ -85,6 +72,7 @@ public class Player : MonoBehaviour
         moveDistance = moveSpeed * Time.deltaTime;
 
 
+        // handle collision
         bool canMove = InContact(moveDir);
 
         if (!canMove)
@@ -117,3 +105,16 @@ public class Player : MonoBehaviour
     }
 
 }
+
+
+
+//Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
+
+//foreach (var c in colliderArray)
+//{
+//    if (c.TryGetComponent(out lightSource))
+//    {
+//        lightSource.PickUpLight(transform);
+//        isCarryingLight = true;
+//    }
+//}

@@ -122,6 +122,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!108 &104798953 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 8886548262196468926, guid: afeb855e68592db45ba871fe30285433,
+    type: 3}
+  m_PrefabInstance: {fileID: 4080233801870448851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a4bfe89f1ad7d47bdc5cabedd13fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 104798953}
 --- !u!1001 &1976430812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -637,6 +644,11 @@ PrefabInstance:
       propertyPath: gameInputs
       value: 
       objectReference: {fileID: 1196221077}
+    - target: {fileID: 7199983825145600631, guid: 1b61333254df1444c90e8f21ed62d0d4,
+        type: 3}
+      propertyPath: lightSource
+      value: 
+      objectReference: {fileID: 1950378123}
     - target: {fileID: 7489189073397993124, guid: 1b61333254df1444c90e8f21ed62d0d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -868,6 +880,11 @@ PrefabInstance:
       propertyPath: gameInputs
       value: 
       objectReference: {fileID: 1196221077}
+    - target: {fileID: 7199983825145600631, guid: 1b61333254df1444c90e8f21ed62d0d4,
+        type: 3}
+      propertyPath: lightSource
+      value: 
+      objectReference: {fileID: 1950378123}
     - target: {fileID: 7489189073397993124, guid: 1b61333254df1444c90e8f21ed62d0d4,
         type: 3}
       propertyPath: m_LocalPosition.x
