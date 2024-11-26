@@ -41,11 +41,20 @@ public class Player : MonoBehaviour
 
     private void InteractWithLight()
     {
-        if (interactionKeyIsPressed && !isCarryingLight && Vector3.Distance(transform.position, lightSource.transform.position) < INTERACTION_RANGE)
+        if (interactionKeyIsPressed && !isCarryingLight)
         {
-            lightSource.PickUpLight(transform);
-            isCarryingLight = true;
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
+
+            foreach (var c in colliderArray)
+            {
+                if (c.TryGetComponent(out lightSource))
+                {
+                    lightSource.PickUpLight(transform);
+                    isCarryingLight = true;
+                }
+            }
         }
+
         else if (interactionKeyIsPressed && isCarryingLight)
         {
             lightSource.DropLight(transform);
@@ -105,16 +114,3 @@ public class Player : MonoBehaviour
     }
 
 }
-
-
-
-//Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
-
-//foreach (var c in colliderArray)
-//{
-//    if (c.TryGetComponent(out lightSource))
-//    {
-//        lightSource.PickUpLight(transform);
-//        isCarryingLight = true;
-//    }
-//}
