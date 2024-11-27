@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
         // face the target
         transform.LookAt(target);
 
+
         //get the distance between the chaser and the target
         float distance = Vector3.Distance(transform.position, target.position);
 

@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
             foreach (var c in colliderArray)
             {
-                if (c.TryGetComponent(out lightSource))
+                if (c.TryGetComponent(out LightSource lightSource))
                 {
                     lightSource.PickUpLight(transform);
                     isCarryingLight = true;
