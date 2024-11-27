@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int playerNum = 1;
+    [SerializeField] private int playerNumber = 1;
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private LightSource lightSource;
 
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        interactionKeyIsPressed = playerNum == 1 ? gameInputs.GetPlayer1Interact() : gameInputs.GetPlayer2Interact();
+        interactionKeyIsPressed = playerNumber == 1 ? gameInputs.GetPlayer1Interact() : gameInputs.GetPlayer2Interact();
 
         InteractWithLight();
     }
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        inputVector = playerNum == 1 ? gameInputs.GetPlayer1MovementVectorNormalized() : gameInputs.GetPlayer2MovementVectorNormalized();
+        inputVector = playerNumber == 1 ? gameInputs.GetPlayer1MovementVectorNormalized() : gameInputs.GetPlayer2MovementVectorNormalized();
 
         var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
 
