@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Player" Collapsed="true">
-    <Position X="6" Y="4" Width="1.5" />
+    <Position X="5.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQCAAEAEAACAAAAAAgAigAAABAAAAABACFIECABAEA=</HashCode>
       <FileName>Assets\Scripts\Player.cs</FileName>
@@ -42,21 +42,21 @@
     <TypeIdentifier />
   </Class>
   <Class Name="LightSource" Collapsed="true">
-    <Position X="11.25" Y="4" Width="1.5" />
+    <Position X="11.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAACAAAAAFAAAAAABAAAIAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Assets\Scripts\LightSource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameInputs" Collapsed="true">
-    <Position X="3.5" Y="4" Width="1.5" />
+    <Position X="3" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAICQAAAAAAAAAAAABAAAABAAAAEA=</HashCode>
       <FileName>Assets\Scripts\GameInputs.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gun" Collapsed="true">
-    <Position X="8.75" Y="4" Width="1.5" />
+    <Position X="8.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAEACAAAAAAAAAAAEAAAAAAAAEAABAAAAAIAAA=</HashCode>
       <FileName>Assets\Scripts\Gun.cs</FileName>
