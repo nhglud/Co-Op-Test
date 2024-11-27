@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     private const float INTERACTION_RANGE = 2f;
     private float moveSpeed = 5.0f;
-    private float rotationSpeed = 5.0f;
+    private float rotationSpeed = 10.0f;
     private float moveDistance;
     private bool isWalking;
     private bool interactionKeyIsPressed;
