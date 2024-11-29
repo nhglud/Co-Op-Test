@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 5325655439944652840}
   - component: {fileID: 2301867660141714176}
   m_Layer: 0
-  m_Name: PlayerMidPoint
+  m_Name: CameraManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -911,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 5662416032312113158, guid: 67b48ef0b153af249930b19c30b6f2b6,
         type: 3}
       propertyPath: m_Name
-      value: PlayerMidPoint
+      value: CameraManager
       objectReference: {fileID: 0}
     - target: {fileID: 6065400266452337793, guid: 67b48ef0b153af249930b19c30b6f2b6,
         type: 3}
