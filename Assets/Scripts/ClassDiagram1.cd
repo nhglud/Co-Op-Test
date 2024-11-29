@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Player">
-    <Position X="12" Y="5.5" Width="2.25" />
+    <Position X="10.75" Y="3.25" Width="2.25" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -16,7 +16,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="@PlayerInputActions" Collapsed="true">
-    <Position X="6.25" Y="3.25" Width="1.5" />
+    <Position X="6.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAACIAABAAAAAECBABAAAAAmAEAAA4AABQgAA=</HashCode>
       <FileName>Assets\Scripts\PlayerInputActions.cs</FileName>
@@ -24,14 +24,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="UnityEngine.MonoBehaviour">
-    <Position X="13.5" Y="0.5" Width="1.5" />
+    <Position X="11" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier />
   </Class>
   <Class Name="LightSource">
-    <Position X="15.75" Y="3.75" Width="1.5" />
+    <Position X="13.75" Y="3.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -44,25 +44,10 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="GameInputs">
-    <Position X="8.5" Y="4.75" Width="1.5" />
+    <Position X="6.25" Y="3.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <InheritanceLine Type="UnityEngine.MonoBehaviour" FixedToPoint="true">
-      <Path>
-        <Point X="14.25" Y="2.377" />
-        <Point X="14.25" Y="4.375" />
-        <Point X="9.062" Y="4.375" />
-        <Point X="9.062" Y="4.75" />
-      </Path>
-    </InheritanceLine>
-    <AssociationLine Name="playerInputActions" Type="@PlayerInputActions" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="8.875" Y="4.75" />
-        <Point X="8.875" Y="3.531" />
-        <Point X="7.75" Y="3.531" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAICQAAAAAAAAAAAABAAAABAAAAEA=</HashCode>
       <FileName>Assets\Scripts\GameInputs.cs</FileName>
@@ -72,7 +57,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Gun">
-    <Position X="10.5" Y="1" Width="1.5" />
+    <Position X="8.5" Y="3.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -82,7 +67,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Enemy">
-    <Position X="18" Y="2" Width="1.5" />
+    <Position X="16" Y="3.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -92,7 +77,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UnityEngine.Light" Collapsed="true">
-    <Position X="18.75" Y="4.5" Width="1.5" />
+    <Position X="13.75" Y="1.75" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
