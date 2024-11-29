@@ -17,6 +17,28 @@
   </Class>
   <Class Name="@PlayerInputActions" Collapsed="true">
     <Position X="6.25" Y="1.25" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="@PlayerInputActions.Player1Actions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\PlayerInputActions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="@PlayerInputActions.Player2Actions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\PlayerInputActions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Interface Name="@PlayerInputActions.IPlayer1Actions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\PlayerInputActions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="@PlayerInputActions.IPlayer2Actions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\PlayerInputActions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAACAAAAACIAABAAAAAECBABAAAAAmAEAAA4AABQgAA=</HashCode>
       <FileName>Assets\Scripts\PlayerInputActions.cs</FileName>

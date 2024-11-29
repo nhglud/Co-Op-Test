@@ -212,7 +212,6 @@ GameObject:
   - component: {fileID: 7443646393847769551}
   - component: {fileID: 7419317645948581344}
   - component: {fileID: 5703461793647101438}
-  - component: {fileID: 8182429160740794635}
   m_Layer: 0
   m_Name: LightSource
   m_TagString: Untagged
@@ -271,16 +270,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 2, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8182429160740794635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7671015342296875041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a4bfe89f1ad7d47bdc5cabedd13fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  light: {fileID: 8886548262196468926}
