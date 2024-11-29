@@ -7,6 +7,7 @@ public class LightSource : MonoBehaviour
 
 
     private float lightDimmingRate = 0.13f;
+   
     BoxCollider boxCollider;
 
     private void Awake()
