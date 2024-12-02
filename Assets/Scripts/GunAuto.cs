@@ -10,11 +10,20 @@ public class GunAuto : MonoBehaviour
     public float bulletspeed = 20; // speed of the bullet
 
     private float nextbullet; // tracking for the next shoot
-    
+    public float weight;
+
+    public float Weight { get => weight; set => weight = value; }
+
+
+    [SerializeField] Player player1;
+    [SerializeField] Player player2;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdatePlayerMoveSpeed();
     }
 
     // Update is called once per frame
@@ -38,5 +47,10 @@ public class GunAuto : MonoBehaviour
 
         //Destroy bullet after few seconds
         //Destroy(bullet, 2)
+    }
+
+    private void UpdatePlayerMoveSpeed()
+    {
+        player1.setMovementSpeed(weight);
     }
 }
