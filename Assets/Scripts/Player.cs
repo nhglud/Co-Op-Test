@@ -71,7 +71,6 @@ public class Player : MonoBehaviour
             {
                 if (c.TryGetComponent(out PickUp pickUp))
                 {
-                    Debug.Log("PickUp Interact");
                     pickUp.pickUpInteraction();
                     lightSource.BoostLight();
                 }
@@ -87,7 +86,9 @@ public class Player : MonoBehaviour
                                     transform.position + Vector3.up * collider.height,
                                     collider.radius,
                                     moveDir,
-                                    moveDistance, -5, QueryTriggerInteraction.Ignore);
+                                    moveDistance,
+                                    -5, 
+                                    QueryTriggerInteraction.Ignore);
     }
 
     private void HandleMovement()
@@ -97,7 +98,6 @@ public class Player : MonoBehaviour
         var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
 
         moveDistance = moveSpeed * Time.deltaTime;
-
 
         // handle collision
         bool canMove = InContact(moveDir);

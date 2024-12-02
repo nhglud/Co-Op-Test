@@ -19,7 +19,9 @@ public class CameraManager : MonoBehaviour
     {
         light = lightSource.GetComponentInChildren<Light>();
         playersMidPoint = (player1Transform.position + player2Transform.position) / 2;
-        transform.position = new Vector3(playersMidPoint.x, distanceModifier * distanceBetweenPlayers + cameraOffsetY, playersMidPoint.z - cameraOffsetZ);
+        transform.position = new Vector3(playersMidPoint.x, 
+                                         distanceModifier * distanceBetweenPlayers + cameraOffsetY,
+                                         playersMidPoint.z - cameraOffsetZ);
 
     }
 
