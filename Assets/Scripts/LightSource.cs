@@ -14,6 +14,7 @@ public class LightSource : MonoBehaviour
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
+        ResetLight();
     }
 
     public void ResetLight()
@@ -24,8 +25,9 @@ public class LightSource : MonoBehaviour
 
     public void BoostLight()
     {
-        light.intensity += 50;
-        light.range += 50;
+        float boost = 10;
+        light.intensity += boost;
+        light.range += boost;
     }
 
 
