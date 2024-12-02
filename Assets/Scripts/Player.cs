@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private LightSource lightSource;
 
+    private float health = 100;
+
     private const float INTERACTION_RANGE = 1.5f;
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 10.0f;
@@ -28,8 +30,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        HandleInteraction();
+        if (health > 0)
+        {
+            HandleMovement();
+            HandleInteraction();
+        }
+        ColdDamage();
     }
 
     private void HandleInteraction()
@@ -38,6 +44,16 @@ public class Player : MonoBehaviour
 
         InteractWithObject();
     }
+
+    private void ColdDamage()
+    {
+        float distanceToLight = Vector3.Distance(transform.position, lightSource.transform.position);
+        if( distanceToLight > lightSource.getLightRange() && health > 0)
+        {
+            health -= 0.5f;
+        }
+    }
+
 
     private void InteractWithObject()
     {
@@ -49,10 +65,16 @@ public class Player : MonoBehaviour
             {
                 if (c.TryGetComponent(out LightSource lightSource))
                 {
-                    this.lightSource = lightSource;
+                    //this.lightSource = lightSource;
                     lightSource.PickUpLight(transform);
                     isCarryingLight = true;
                 }
+
+                if (c.TryGetComponent(out Player otherPlayer) && otherPlayer.health <= 0)
+                {
+                    otherPlayer.health = 100;
+                }
+
             }
         }
 
@@ -60,10 +82,10 @@ public class Player : MonoBehaviour
         {
             lightSource.DropLight(transform);
             isCarryingLight = false;
-            this.lightSource = null;
+            //this.lightSource = null;
         }
 
-        if(isCarryingLight)
+        if (isCarryingLight)
         {
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
 
@@ -79,7 +101,6 @@ public class Player : MonoBehaviour
 
     }
 
-
     private bool InContact(Vector3 moveDir)
     {
         return !Physics.CapsuleCast(transform.position,
@@ -87,7 +108,7 @@ public class Player : MonoBehaviour
                                     collider.radius,
                                     moveDir,
                                     moveDistance,
-                                    -5, 
+                                    -5,
                                     QueryTriggerInteraction.Ignore);
     }
 

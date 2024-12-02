@@ -17,6 +17,11 @@ public class LightSource : MonoBehaviour
         ResetLight();
     }
 
+    public float getLightRange()
+    {
+        return light.range;
+    }
+
     public void ResetLight()
     {
         light.intensity = initialIntensity;
