@@ -9,8 +9,8 @@ public class CameraManager : MonoBehaviour
     private Light light;
     private Vector3 playersMidPoint;
     private float distanceBetweenPlayers;
-    private float cameraYOffset = 8;
-    private float cameraZOffset = 8;
+    private float cameraOffsetY = 8;
+    private float cameraOffsetZ = 5;
     private float lerpModifier = 1.5f;
     private float distanceModifier = 1f;
 
@@ -19,9 +19,9 @@ public class CameraManager : MonoBehaviour
     {
         light = lightSource.GetComponentInChildren<Light>();
         playersMidPoint = (player1Transform.position + player2Transform.position) / 2;
+        transform.position = new Vector3(playersMidPoint.x, distanceModifier * distanceBetweenPlayers + cameraOffsetY, playersMidPoint.z - cameraOffsetZ);
 
     }
-
 
     void Update()
     {
@@ -30,9 +30,9 @@ public class CameraManager : MonoBehaviour
         distanceBetweenPlayers = Vector3.Distance(player1Transform.position, player2Transform.position);
 
         transform.position = Vector3.Lerp(transform.position,
-                                                     new Vector3(playersMidPoint.x,
-                                                                 distanceModifier * distanceBetweenPlayers + cameraYOffset,
-                                                                 playersMidPoint.z - cameraZOffset),
-                                                     Time.deltaTime * lerpModifier);
+                                          new Vector3(playersMidPoint.x,
+                                                      distanceModifier * distanceBetweenPlayers + cameraOffsetY,
+                                                      playersMidPoint.z - cameraOffsetZ),
+                                          Time.deltaTime * lerpModifier);
     }
 }

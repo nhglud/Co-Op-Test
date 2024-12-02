@@ -113,4 +113,9 @@ public class Player : MonoBehaviour
         transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
     }
 
+    public void setMovementSpeed(float newMoveSpeed)
+    {
+        moveSpeed = newMoveSpeed * moveSpeed;
+    }
+
 }
