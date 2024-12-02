@@ -59,10 +59,10 @@ public class GunAim : MonoBehaviour
             GameObject closestEnemy = enemiesInRange[0];
             for (int i = 0; i < enemiesInRange.Count; i++)
             {
-                Transform currentEnemyTrans = enemiesInRange[i].transform;
+                Vector3 currentEnemyPos = enemiesInRange[i].transform.position;
 
 
-                if (Vector3.Distance(playerTrans.position, currentEnemyTrans.position) > Vector3.Distance(playerTrans.position, closestEnemy.transform.position))
+                if (Vector3.Distance(playerTrans.position, currentEnemyPos) < Vector3.Distance(playerTrans.position, closestEnemy.transform.position))
                 {
                     closestEnemy = enemiesInRange[i];
                 }

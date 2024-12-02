@@ -10,10 +10,10 @@ public class GunAuto : MonoBehaviour
     public float bulletspeed = 20; // speed of the bullet
 
     private float nextbullet; // tracking for the next shoot
-<<<<<<< HEAD
+
 
     [SerializeField] GunAim gunAim;
-=======
+
     public float weight;
     public float bulletdamage;
 
@@ -24,7 +24,7 @@ public class GunAuto : MonoBehaviour
 
     [SerializeField] Enemy enemy;
 
->>>>>>> 0f7d2610526b61243cab23f4538d94dd2e4656d0
+
 
     // Start is called before the first frame update
     void Start()
