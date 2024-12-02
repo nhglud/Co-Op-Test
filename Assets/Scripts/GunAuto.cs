@@ -11,13 +11,14 @@ public class GunAuto : MonoBehaviour
 
     private float nextbullet; // tracking for the next shoot
     public float weight;
+    public float bulletdamage;
 
     public float Weight { get => weight; set => weight = value; }
-
+    public float Bulletdamage { get => bulletdamage; set => bulletdamage = value; }
 
     [SerializeField] Player player1;
-    [SerializeField] Player player2;
 
+    [SerializeField] Enemy enemy;
 
 
     // Start is called before the first frame update
@@ -34,7 +35,11 @@ public class GunAuto : MonoBehaviour
             shoot();
             nextbullet = Time.time + 1 / fireRate;
         }
+
+       
     }
+
+   
 
     public void shoot()
     {
