@@ -4,16 +4,37 @@ public class LightSource : MonoBehaviour
 {
 
     [SerializeField] private Light light;
+    private const float initialIntensity = 30;
+    private const float initialRange = 30;
 
-
-    private float lightDimmingRate = 0.13f;
+    private float lightDimmingRate = 2f;
    
     BoxCollider boxCollider;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
+        ResetLight();
     }
+
+    public float getLightRange()
+    {
+        return light.range;
+    }
+
+    public void ResetLight()
+    {
+        light.intensity = initialIntensity;
+        light.range = initialIntensity;
+    }
+
+    public void BoostLight()
+    {
+        float boost = 10;
+        light.intensity += boost;
+        light.range += boost;
+    }
+
 
     private void Update()
     {
@@ -25,6 +46,8 @@ public class LightSource : MonoBehaviour
         light.intensity -= lightDimmingRate * Time.deltaTime;
         light.range -= lightDimmingRate * Time.deltaTime;
     }
+
+
 
     public void PickUpLight(Transform playerTransform)
     {

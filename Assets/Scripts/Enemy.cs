@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    private float currenthealth, enemyMaxHealth = 10;
     private Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
@@ -29,4 +30,21 @@ public class Enemy : MonoBehaviour
 
         transform.position += transform.forward * 2 * Time.deltaTime;
     }
+
+    public void EnemyHealth()
+    {
+        currenthealth = enemyMaxHealth;
+    }
+
+    public void Takedamage(float bulletdamage)
+    {
+        currenthealth -= bulletdamage;
+
+        if (currenthealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+   
 }

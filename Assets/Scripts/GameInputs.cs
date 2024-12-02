@@ -13,7 +13,6 @@ public class GameInputs : MonoBehaviour
         playerInputActions.Player2.Enable();
     }
 
-
     public bool GetPlayer1Interact()
     {
         return playerInputActions.Player1.Interact.triggered;

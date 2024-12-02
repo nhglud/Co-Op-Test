@@ -6,7 +6,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private LightSource lightSource;
 
-    private const float INTERACTION_RANGE = 2f;
+    private float health = 100;
+
+    private const float INTERACTION_RANGE = 1.5f;
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 10.0f;
     private float moveDistance;
@@ -28,18 +30,32 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        HandleInteraction();
+        if (health > 0)
+        {
+            HandleMovement();
+            HandleInteraction();
+        }
+        ColdDamage();
     }
 
     private void HandleInteraction()
     {
         interactionKeyIsPressed = playerNumber == 1 ? gameInputs.GetPlayer1Interact() : gameInputs.GetPlayer2Interact();
 
-        InteractWithLight();
+        InteractWithObject();
     }
 
-    private void InteractWithLight()
+    private void ColdDamage()
+    {
+        float distanceToLight = Vector3.Distance(transform.position, lightSource.transform.position);
+        if( distanceToLight > lightSource.getLightRange() && health > 0)
+        {
+            health -= 0.5f;
+        }
+    }
+
+
+    private void InteractWithObject()
     {
         if (interactionKeyIsPressed && !isCarryingLight)
         {
@@ -49,9 +65,16 @@ public class Player : MonoBehaviour
             {
                 if (c.TryGetComponent(out LightSource lightSource))
                 {
+                    //this.lightSource = lightSource;
                     lightSource.PickUpLight(transform);
                     isCarryingLight = true;
                 }
+
+                if (c.TryGetComponent(out Player otherPlayer) && otherPlayer.health <= 0)
+                {
+                    otherPlayer.health = 100;
+                }
+
             }
         }
 
@@ -59,9 +82,24 @@ public class Player : MonoBehaviour
         {
             lightSource.DropLight(transform);
             isCarryingLight = false;
+            //this.lightSource = null;
         }
-    }
 
+        if (isCarryingLight)
+        {
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
+
+            foreach (var c in colliderArray)
+            {
+                if (c.TryGetComponent(out PickUp pickUp))
+                {
+                    pickUp.pickUpInteraction();
+                    lightSource.BoostLight();
+                }
+            }
+        }
+
+    }
 
     private bool InContact(Vector3 moveDir)
     {
@@ -69,7 +107,9 @@ public class Player : MonoBehaviour
                                     transform.position + Vector3.up * collider.height,
                                     collider.radius,
                                     moveDir,
-                                    moveDistance);
+                                    moveDistance,
+                                    -5,
+                                    QueryTriggerInteraction.Ignore);
     }
 
     private void HandleMovement()
@@ -79,7 +119,6 @@ public class Player : MonoBehaviour
         var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
 
         moveDistance = moveSpeed * Time.deltaTime;
-
 
         // handle collision
         bool canMove = InContact(moveDir);
@@ -111,6 +150,11 @@ public class Player : MonoBehaviour
 
         isWalking = moveDir != Vector3.zero;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
+    }
+
+    public void setMovementSpeed(float newMoveSpeed)
+    {
+        moveSpeed = newMoveSpeed * moveSpeed;
     }
 
 }
