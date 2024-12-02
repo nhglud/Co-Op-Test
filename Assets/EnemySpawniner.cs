@@ -8,14 +8,24 @@ public class EnemySpawniner : MonoBehaviour
 
     [SerializeField] private GameObject enemyAI;
 
+    [SerializeField] private float spawnInterval = 5f;
 
-    private void Update()
+
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SpawnAnemyAI();
-        }
+        // Start the Coroutine to spawn enemies on a timer
+        //StartCoroutine(SpawnEnemiesWithTimer());
     }
+
+    //private IEnumerator SpawnEnemiesWithTimer()
+    //{
+    //    while (true) // Infinite loop for continuous spawning
+    //    {
+    //        S; // Spawn an enemy
+    //        yield return new WaitForSeconds(spawnInterval); // Wait before the next spawn
+    //    }
+    //}
 
     private void SpawnAnemyAI()
     {
