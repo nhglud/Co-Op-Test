@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private LightSource lightSource;
 
-    private const float INTERACTION_RANGE = 2f;
+    private const float INTERACTION_RANGE = 1.5f;
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 10.0f;
     private float moveDistance;
@@ -36,10 +36,10 @@ public class Player : MonoBehaviour
     {
         interactionKeyIsPressed = playerNumber == 1 ? gameInputs.GetPlayer1Interact() : gameInputs.GetPlayer2Interact();
 
-        InteractWithLight();
+        InteractWithObject();
     }
 
-    private void InteractWithLight()
+    private void InteractWithObject()
     {
         if (interactionKeyIsPressed && !isCarryingLight)
         {
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
             {
                 if (c.TryGetComponent(out LightSource lightSource))
                 {
+                    this.lightSource = lightSource;
                     lightSource.PickUpLight(transform);
                     isCarryingLight = true;
                 }
@@ -59,7 +60,24 @@ public class Player : MonoBehaviour
         {
             lightSource.DropLight(transform);
             isCarryingLight = false;
+            this.lightSource = null;
         }
+
+        if(isCarryingLight)
+        {
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
+
+            foreach (var c in colliderArray)
+            {
+                if (c.TryGetComponent(out PickUp pickUp))
+                {
+                    Debug.Log("PickUp Interact");
+                    pickUp.pickUpInteraction();
+                    lightSource.BoostLight();
+                }
+            }
+        }
+
     }
 
 
@@ -69,7 +87,7 @@ public class Player : MonoBehaviour
                                     transform.position + Vector3.up * collider.height,
                                     collider.radius,
                                     moveDir,
-                                    moveDistance);
+                                    moveDistance, -5, QueryTriggerInteraction.Ignore);
     }
 
     private void HandleMovement()
