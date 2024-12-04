@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class LightSource : MonoBehaviour
 {
@@ -7,19 +8,22 @@ public class LightSource : MonoBehaviour
     private const float initialIntensity = 30;
     private const float initialRange = 30;
 
-    private float lightDimmingRate = 2f;
+    private float lightDimmingRate = 1f;
    
-    BoxCollider boxCollider;
+    private BoxCollider boxCollider;
+    private Transform lightSphere;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
+        //lightSphere = GameObject.transform.FindChild("Sphere").gameObject;
+        lightSphere = transform.Find("Sphere");
         ResetLight();
     }
 
-    public float getLightRange()
+    public float getLightRadius()
     {
-        return light.range;
+        return lightSphere.localScale.x * 0.5f;
     }
 
     public void ResetLight()
@@ -32,6 +36,7 @@ public class LightSource : MonoBehaviour
     {
         float boost = 10;
         light.intensity += boost;
+
         light.range += boost;
     }
 
@@ -39,11 +44,14 @@ public class LightSource : MonoBehaviour
     private void Update()
     {
         DimLight();
+        lightSphere.localScale = light.range * new Vector3(1, 0.5f, 1);
+        
     }
 
     private void DimLight()
     {
         light.intensity -= lightDimmingRate * Time.deltaTime;
+
         light.range -= lightDimmingRate * Time.deltaTime;
     }
 

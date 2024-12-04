@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private void ColdDamage()
     {
         float distanceToLight = Vector3.Distance(transform.position, lightSource.transform.position);
-        if (distanceToLight > lightSource.getLightRange() && health > 0)
+        if (distanceToLight > lightSource.getLightRadius() && health > 0)
         {
             health -= 0.5f;
         }
