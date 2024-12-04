@@ -8,7 +8,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQCAAEAEAACAAAAAAgACgAAABAAAAABADFIECABAEA=</HashCode>
+      <HashCode>AAwCAAEAECACAAAAAAgAAgQAABAAAAABABFIECABAEg=</HashCode>
       <FileName>Assets\Scripts\Player.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -37,7 +37,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQgAAAAACAAAAAFAAAAAABAAAIAAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAQoAAAAACAAQAAFAgAAAABAAAIAAAAAAAAAAAAgAEA=</HashCode>
       <FileName>Assets\Scripts\LightSource.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -63,8 +63,8 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQAAAAEACAAAAAAAAAAAEAAAAAAAAEAABAAAAAIAAA=</HashCode>
-      <FileName>Assets\Scripts\Gun.cs</FileName>
+      <HashCode>ACQAAAAEACAAAAAAAAAIAEAQAAAIAAEQCBAAAAAIAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Gun.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Enemy" Collapsed="true">
@@ -73,7 +73,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAIAAQIAIAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -84,7 +84,7 @@
   <Class Name="CameraManager" Collapsed="true">
     <Position X="13.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAADAAiBAAAAAgAgAABAAAAIAAAgAAAAQAAAAAAA=</HashCode>
+      <HashCode>CAQAAADAAiBAAAAAgAgAABAAAAIAAAgAAAAQAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\CameraManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

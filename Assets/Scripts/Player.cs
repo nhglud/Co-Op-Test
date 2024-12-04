@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     private float health = 100;
 
-    private const float INTERACTION_RANGE = 1.5f;
+    private float interactionRange = 1.5f;
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 10.0f;
     private float moveDistance;
@@ -35,62 +35,64 @@ public class Player : MonoBehaviour
             HandleMovement();
             HandleInteraction();
         }
+
         ColdDamage();
-    }
-
-    private void HandleInteraction()
-    {
-        interactionKeyIsPressed = playerNumber == 1 ? gameInputs.GetPlayer1Interact() : gameInputs.GetPlayer2Interact();
-
-        InteractWithObject();
     }
 
     private void ColdDamage()
     {
         float distanceToLight = Vector3.Distance(transform.position, lightSource.transform.position);
-        if( distanceToLight > lightSource.getLightRange() && health > 0)
+        if (distanceToLight > lightSource.getLightRange() && health > 0)
         {
             health -= 0.5f;
         }
     }
 
 
-    private void InteractWithObject()
+    private void HandleInteraction()
     {
+        interactionKeyIsPressed = playerNumber == 1 ? gameInputs.GetPlayer1Interact()
+                                                    : gameInputs.GetPlayer2Interact();
+
         if (interactionKeyIsPressed && !isCarryingLight)
         {
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactionRange);
 
             foreach (var c in colliderArray)
             {
-                if (c.TryGetComponent(out LightSource lightSource))
-                {
-                    //this.lightSource = lightSource;
-                    lightSource.PickUpLight(transform);
-                    isCarryingLight = true;
-                }
-
+                // revive player
                 if (c.TryGetComponent(out Player otherPlayer) && otherPlayer.health <= 0)
                 {
                     otherPlayer.health = 100;
                 }
 
+                // pick up light
+                else if (c.TryGetComponent(out LightSource lightSource))
+                {
+                    Debug.Log(lightSource);
+                    lightSource.PickUpLight(transform);
+                    isCarryingLight = true;
+                }
+
             }
         }
 
+        // VERY IMPORTANT ELSE IF--- DO NOT DELETE ELSE
         else if (interactionKeyIsPressed && isCarryingLight)
         {
+            // drop light
             lightSource.DropLight(transform);
             isCarryingLight = false;
-            //this.lightSource = null;
         }
+
 
         if (isCarryingLight)
         {
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, INTERACTION_RANGE);
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactionRange);
 
             foreach (var c in colliderArray)
             {
+                // pick up light booster
                 if (c.TryGetComponent(out PickUp pickUp))
                 {
                     pickUp.pickUpInteraction();
@@ -100,6 +102,8 @@ public class Player : MonoBehaviour
         }
 
     }
+
+
 
     private bool InContact(Vector3 moveDir)
     {
@@ -114,7 +118,8 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        inputVector = playerNumber == 1 ? gameInputs.GetPlayer1MovementVectorNormalized() : gameInputs.GetPlayer2MovementVectorNormalized();
+        inputVector = playerNumber == 1 ? gameInputs.GetPlayer1MovementVectorNormalized()
+                                        : gameInputs.GetPlayer2MovementVectorNormalized();
 
         var moveDir = new Vector3(inputVector.x, 0, inputVector.y);
 
