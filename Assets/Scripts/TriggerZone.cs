@@ -43,19 +43,20 @@ public class TriggerZone : MonoBehaviour
 
             Player player = other.GetComponent<Player>();
 
-            player.MovementDisabled();
+            // Fjerne kontrols fra karakteren, så spillerens input kan bruges til minigame input.
+            //player.MovementDisabled();
 
             //lengthOfCode = UnityEngine.Random.Range(5, 8);
 
-            switch (player.GetPlayerID())
-            {
-                case 1:
-                    // Kode for at Player 1 spiller
-                    break;
-                case 2:
-                    // Kode for at Player 2 spiller
-                    break;
-            }
+            //switch (player.GetPlayerID())
+            //{
+            //    case 1:
+            //        // Kode for at Player 1 spiller
+            //        break;
+            //    case 2:
+            //        // Kode for at Player 2 spiller
+            //        break;
+            //}
         }
 
         for (int i = 0; i < lengthOfCode; i++)

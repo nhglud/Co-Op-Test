@@ -20,7 +20,7 @@ public class Dash : Abilities
             dashVelocity = dashVelocity * 2;
 
             // Øger spillerens hastighed.
-            player.BoostMovementSpeed(dashVelocity);
+            //player.BoostMovementSpeed(dashVelocity);
 
             // Forøgelsen sættes tilbage, næste aktivering ikke "automatisk" er med synergi effekt.
             dashVelocity = dashVelocity * 0.5f;
@@ -30,7 +30,7 @@ public class Dash : Abilities
             Player player = parent.GetComponent<Player>();
 
             // Øger spillerens hastighed.
-            player.BoostMovementSpeed(dashVelocity);
+            //player.BoostMovementSpeed(dashVelocity);
         }
     }
 
@@ -39,6 +39,6 @@ public class Dash : Abilities
         Player player = parent.GetComponent<Player>();
 
         // Sætter spillerens hastighed tilbage til den normale værdi.
-        player.SetMovementSpeed(player.GetNormalMovementSpeed());
+        //player.SetMovementSpeed(player.GetNormalMovementSpeed());
     }
 }
