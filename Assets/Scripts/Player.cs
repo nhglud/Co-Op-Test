@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void HandleInteraction()
     {
         interactionKeyIsPressed = playerNumber == 1 ? gameInputs.GetPlayer1Interact()
@@ -85,7 +84,6 @@ public class Player : MonoBehaviour
             isCarryingLight = false;
         }
 
-
         if (isCarryingLight)
         {
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactionRange);
@@ -102,8 +100,6 @@ public class Player : MonoBehaviour
         }
 
     }
-
-
 
     private bool InContact(Vector3 moveDir)
     {

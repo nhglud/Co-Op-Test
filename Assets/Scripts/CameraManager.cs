@@ -29,9 +29,7 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         playersMidPoint = (player1Transform.position + player2Transform.position) / 2;
-
         distanceBetweenPlayers = Vector3.Distance(player1Transform.position, player2Transform.position);
-
         transform.position = Vector3.Lerp(transform.position,
                                           new Vector3(playersMidPoint.x,
                                                       distanceModifier * distanceBetweenPlayers + cameraOffsetY + lightModifier * light.range,

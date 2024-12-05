@@ -5,8 +5,8 @@ public class LightSource : MonoBehaviour
 {
 
     [SerializeField] private Light light;
-    private const float initialIntensity = 30;
-    private const float initialRange = 30;
+    private const float initialIntensity = 15;
+    private const float initialRange = 15;
 
     private float lightDimmingRate = 1f;
    
@@ -16,9 +16,10 @@ public class LightSource : MonoBehaviour
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
-        //lightSphere = GameObject.transform.FindChild("Sphere").gameObject;
         lightSphere = transform.Find("Sphere");
         ResetLight();
+        lightSphere.localScale = light.range * new Vector3(1, 0.5f, 1);
+
     }
 
     public float getLightRadius()
@@ -36,33 +37,26 @@ public class LightSource : MonoBehaviour
     {
         float boost = 10;
         light.intensity += boost;
-
         light.range += boost;
     }
-
 
     private void Update()
     {
         DimLight();
-        lightSphere.localScale = light.range * new Vector3(1, 0.5f, 1);
-        
+        lightSphere.localScale = light.range * new Vector3(1, 0.5f, 1);        
     }
 
     private void DimLight()
     {
         light.intensity -= lightDimmingRate * Time.deltaTime;
-
         light.range -= lightDimmingRate * Time.deltaTime;
     }
-
-
 
     public void PickUpLight(Transform playerTransform)
     {
         transform.SetParent(playerTransform);
         boxCollider.enabled = false;
     }
-
 
     public void DropLight(Transform playerTransform)
     {
