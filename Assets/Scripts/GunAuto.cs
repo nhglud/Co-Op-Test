@@ -54,8 +54,11 @@ public class GunAuto : MonoBehaviour
 
         Vector3 aimDir = gunAim.updateAimDirection();
 
+        if (aimDir.x > 0 || aimDir.y > 0 || aimDir.z > 0)
+        {
+            bulletspawn.transform.forward = aimDir;
+        }
         
-        bulletspawn.transform.forward = gunAim.updateAimDirection();
 
         //Add velocity
         bulletshot.GetComponent<Rigidbody>().velocity = bulletspawn.transform.forward.normalized * bulletspeed;
