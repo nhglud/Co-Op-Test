@@ -150,7 +150,11 @@ public class Player : MonoBehaviour
         }
 
         isWalking = moveDir != Vector3.zero;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
+        if (moveDir.x > 0 || moveDir.y > 0 || moveDir.z > 0 )
+        {
+            transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
+        }
+        
     }
 
     public void setMovementSpeed(float newMoveSpeed)
