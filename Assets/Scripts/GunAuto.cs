@@ -22,8 +22,6 @@ public class GunAuto : MonoBehaviour
 
     [SerializeField] Player player1;
 
-    [SerializeField] Enemy enemy;
-
     public enum weapons {sniper, pistol, minigun};
     [SerializeField] weapons selectStartWeapon;
 
@@ -55,7 +53,7 @@ public class GunAuto : MonoBehaviour
         switch (weapon)
         {
             case weapons.sniper:
-                SetPistol();
+                SetSniper();
                 break;
 
             case weapons.pistol:
@@ -63,7 +61,7 @@ public class GunAuto : MonoBehaviour
                 break;
 
             case weapons.minigun:
-                SetPistol();
+                SetMinigun();
                 break;
 
         }
@@ -72,26 +70,26 @@ public class GunAuto : MonoBehaviour
 
     public void SetSniper ()
     {
-        fireRate = 5;
+        fireRate = 0.5f;
         bulletspeed = 20; // speed of the bullet
-        weight = 1;
-        bulletdamage = 2;
+        weight = 4;
+        bulletdamage = 10;
     }
 
     public void SetPistol()
     {
-        fireRate = 5;
+        fireRate = 2;
         bulletspeed = 20; // speed of the bullet
-        weight = 1;
-        bulletdamage = 2;
+        weight = 2;
+        bulletdamage = 1;
     }
 
     public void SetMinigun()
     {
-        fireRate = 5;
+        fireRate = 6;
         bulletspeed = 20; // speed of the bullet
-        weight = 1;
-        bulletdamage = 2;
+        weight = 6;
+        bulletdamage = 5;
     }
 
 
