@@ -12,6 +12,7 @@ public class EnemyAI_2 : MonoBehaviour
     private Transform currentTarget;
     private Coroutine searchCoroutine;
     private float health = 100;
+    [SerializeField] float speed;
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class EnemyAI_2 : MonoBehaviour
         transform.LookAt(currentTarget.position);
 
         // Flyt objektet i den beregnede retning
-        transform.Translate(direction * Time.deltaTime, Space.World);
+        transform.Translate(direction * Time.deltaTime * speed, Space.World);
     }
 }
 
@@ -72,10 +73,16 @@ public class EnemyAI_2 : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+      
+
         // Tjekker om objektet, som enemy rammer, har tag'en "Player"
         if (other.CompareTag("Player") || other.CompareTag("LightSource"))
         {
+            print("destroy");
             // Destruerer player-objektet
+
+
+            Time.timeScale = 0;
             Destroy(other.gameObject);
         }
     }
