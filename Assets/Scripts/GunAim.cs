@@ -17,7 +17,8 @@ public class GunAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+       
     }
 
     public Vector3 updateAimDirection ()
@@ -67,7 +68,6 @@ public class GunAim : MonoBehaviour
                 {
                     closestEnemy = enemiesInRange[i];
                 }
-
             }
             return closestEnemy;
         }
