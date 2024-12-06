@@ -17,9 +17,12 @@ public class Player : MonoBehaviour
     private bool isCarryingLight = false;
     private Vector3 lastMoveDir;
     private Vector2 inputVector;
+    private bool inTriggerZone = false;
 
     private CapsuleCollider collider;
 
+    public bool InTriggerZone { get => inTriggerZone; set => inTriggerZone = value; }
+    public int GetPlayerNumber { get => playerNumber; }
     public bool IsWalking { get => isWalking; }
 
 
@@ -30,7 +33,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (health > 0)
+        if (!inTriggerZone && health > 0)
         {
             HandleMovement();
             HandleInteraction();
