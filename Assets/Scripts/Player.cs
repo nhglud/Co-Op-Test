@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private LightSource lightSource;
 
-    private float health = 100;
+    [SerializeField] private float health = 100;
 
     private float interactionRange = 1.5f;
     private float moveSpeed = 5.0f;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private float timeToPermaDeath = 7;
     private float elapsedTime = 0;
     private bool isAlive = true;
-    //public bool IsAlive { get => isAlive; }
+    
 
     private CapsuleCollider collider;
 
@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
     {
         if (health > 0)
         {
-            Debug.Log(isAlive);
             HandleMovement();
             HandleInteraction();
             ColdDamage();
@@ -43,12 +42,12 @@ public class Player : MonoBehaviour
         {
             // If the players health reaches zero
             // we start a count down until permadeath 
-            Debug.Log("is Down");
+            Debug.Log("Player is Down");
             elapsedTime += Time.deltaTime;
             if(elapsedTime > timeToPermaDeath)
             {
                 isAlive = false;
-                Debug.Log(isAlive);
+                Debug.Log("Player is Dead");
             }
         }
 
@@ -56,6 +55,7 @@ public class Player : MonoBehaviour
 
     private void ColdDamage()
     {
+        // When the player is out of range of the light they start taking damage.
         float distanceToLight = Vector3.Distance(transform.position, lightSource.transform.position);
         if (distanceToLight > lightSource.getLightRadius() && health > 0)
         {
@@ -75,9 +75,12 @@ public class Player : MonoBehaviour
             foreach (var c in colliderArray)
             {
                 // revive player
-                if (c.TryGetComponent(out Player otherPlayer) && otherPlayer.isAlive && otherPlayer.health <= 0)
+                if (c.TryGetComponent(out Player otherPlayer) && 
+                    otherPlayer.isAlive && 
+                    otherPlayer.health <= 0)
                 {
                     otherPlayer.health = 100;
+                    Debug.Log("Player was revived");
                 }
 
                 // pick up light
@@ -169,12 +172,6 @@ public class Player : MonoBehaviour
         {
             transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
         }
-
-        //if (moveDir.x > 0 || moveDir.y > 0 || moveDir.z > 0 )
-        //{
-        //    transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
-        //}
-
     }
 
     public void setMovementSpeed(float newMoveSpeed)

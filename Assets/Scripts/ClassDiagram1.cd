@@ -8,7 +8,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAwCAAEAECACAAAAAAgAAgQAABAAAAABABBIECAAAEg=</HashCode>
+      <HashCode>AAwCAAEAESACAAAAAAgAAgQAABAAAAABABhIECEAAEg=</HashCode>
       <FileName>Assets\Scripts\Player.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -73,7 +73,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAIAAQIAIAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAABAACAAAAAAIAAQIAIAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
