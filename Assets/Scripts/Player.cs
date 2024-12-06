@@ -21,9 +21,7 @@ public class Player : MonoBehaviour
     private float elapsedTime = 0;
     private bool isAlive = true;
     
-
     private CapsuleCollider collider;
-
 
     private void Awake()
     {
