@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30e0fdecf63c6a4194b8548a02eef34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
 --- !u!136 &304843618
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -598,6 +599,11 @@ PrefabInstance:
       propertyPath: gameInputs
       value: 
       objectReference: {fileID: 1372906606}
+    - target: {fileID: 7199983825145600631, guid: 1b61333254df1444c90e8f21ed62d0d4,
+        type: 3}
+      propertyPath: lightSource
+      value: 
+      objectReference: {fileID: 1731503666}
     - target: {fileID: 7489189073397993124, guid: 1b61333254df1444c90e8f21ed62d0d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -700,7 +706,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -978,6 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30e0fdecf63c6a4194b8548a02eef34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
 --- !u!136 &819116670
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1079,6 +1086,11 @@ PrefabInstance:
       propertyPath: gameInputs
       value: 
       objectReference: {fileID: 1372906606}
+    - target: {fileID: 7199983825145600631, guid: 1b61333254df1444c90e8f21ed62d0d4,
+        type: 3}
+      propertyPath: lightSource
+      value: 
+      objectReference: {fileID: 1731503666}
     - target: {fileID: 7489189073397993124, guid: 1b61333254df1444c90e8f21ed62d0d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1156,6 +1168,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1756301444}
+    - targetCorrespondingSourceObject: {fileID: 7835447214026571609, guid: 1b61333254df1444c90e8f21ed62d0d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1756301448}
+    - targetCorrespondingSourceObject: {fileID: 7835447214026571609, guid: 1b61333254df1444c90e8f21ed62d0d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1756301447}
   m_SourcePrefab: {fileID: 100100000, guid: 1b61333254df1444c90e8f21ed62d0d4, type: 3}
 --- !u!1 &1281513801
 GameObject:
@@ -1217,6 +1237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30e0fdecf63c6a4194b8548a02eef34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
 --- !u!136 &1281513804
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1482,6 +1503,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1731503666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7419317645948581344, guid: afeb855e68592db45ba871fe30285433,
+    type: 3}
+  m_PrefabInstance: {fileID: 741774762}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a4bfe89f1ad7d47bdc5cabedd13fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1749510145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,6 +1575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30e0fdecf63c6a4194b8548a02eef34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
 --- !u!136 &1749510148
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1660,6 +1694,41 @@ MonoBehaviour:
   currentAmmo: 0
   reloading: 0
   currentlyReloading: 0
+--- !u!114 &1756301447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756301440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b072a5bb970cca4cbc2dd660426c8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 0}
+  bulletspawn: {fileID: 0}
+  fireRate: 0
+  bulletspeed: 20
+  gunAim: {fileID: 0}
+  weight: 0
+  bulletdamage: 0
+  player1: {fileID: 0}
+  enemy: {fileID: 0}
+  selectStartWeapon: 1
+--- !u!114 &1756301448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756301440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34af02fe78ef8a444ae580b24e13c8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTrans: {fileID: 0}
 --- !u!1 &1812406347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1888,7 @@ MonoBehaviour:
   bulletdamage: 0
   player1: {fileID: 0}
   enemy: {fileID: 0}
+  selectStartWeapon: 0
 --- !u!65 &1939680176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1940,6 +2010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30e0fdecf63c6a4194b8548a02eef34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
 --- !u!136 &1956737095
 CapsuleCollider:
   m_ObjectHideFlags: 0

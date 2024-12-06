@@ -24,12 +24,15 @@ public class GunAuto : MonoBehaviour
 
     [SerializeField] Enemy enemy;
 
+    public enum weapons {sniper, pistol, minigun};
+    [SerializeField] weapons selectStartWeapon;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        setWeapon(selectStartWeapon);
         UpdatePlayerMoveSpeed();
     }
 
@@ -45,7 +48,54 @@ public class GunAuto : MonoBehaviour
        
     }
 
-   
+
+
+    public void setWeapon (weapons weapon )
+    {
+        switch (weapon)
+        {
+            case weapons.sniper:
+                SetPistol();
+                break;
+
+            case weapons.pistol:
+                SetPistol();
+                break;
+
+            case weapons.minigun:
+                SetPistol();
+                break;
+
+        }
+    }
+
+
+    public void SetSniper ()
+    {
+        fireRate = 5;
+        bulletspeed = 20; // speed of the bullet
+        weight = 1;
+        bulletdamage = 2;
+    }
+
+    public void SetPistol()
+    {
+        fireRate = 5;
+        bulletspeed = 20; // speed of the bullet
+        weight = 1;
+        bulletdamage = 2;
+    }
+
+    public void SetMinigun()
+    {
+        fireRate = 5;
+        bulletspeed = 20; // speed of the bullet
+        weight = 1;
+        bulletdamage = 2;
+    }
+
+
+
 
     public void shoot()
     {

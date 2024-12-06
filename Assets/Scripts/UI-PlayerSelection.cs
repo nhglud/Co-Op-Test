@@ -7,7 +7,7 @@ public class UIPlayerSelection : MonoBehaviour
 
 
 
-    public enum weapons {sniper, pistol, minigun};
+    
 
     [SerializeField] UnityEngine.UI.Button sniper;
     [SerializeField] UnityEngine.UI.Button pistol;
@@ -15,14 +15,14 @@ public class UIPlayerSelection : MonoBehaviour
 
     [SerializeField] bool isPlayer1;
 
-    private weapons currentWeapon;
+    private GunAuto.weapons currentWeapon;
 
     // Start is called before the first frame update
     void Start()
     {
-        sniper.onClick.AddListener(delegate { SelectWeapon(weapons.sniper); });
-        pistol.onClick.AddListener(delegate { SelectWeapon(weapons.pistol); });
-        minigun.onClick.AddListener(delegate { SelectWeapon(weapons.minigun); });
+        sniper.onClick.AddListener(delegate { SelectWeapon(GunAuto.weapons.sniper); });
+        pistol.onClick.AddListener(delegate { SelectWeapon(GunAuto.weapons.pistol); });
+        minigun.onClick.AddListener(delegate { SelectWeapon(GunAuto.weapons.minigun); });
 
         pistol.Select();
 
@@ -48,7 +48,7 @@ public class UIPlayerSelection : MonoBehaviour
 
     }
 
-    public void SelectWeapon (weapons input) 
+    public void SelectWeapon (GunAuto.weapons input) 
     {
         currentWeapon = input;
         print(currentWeapon);
