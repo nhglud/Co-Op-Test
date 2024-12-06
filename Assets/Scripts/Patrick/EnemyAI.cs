@@ -9,7 +9,6 @@ public class EnemyAI : MonoBehaviour
     public Transform Player2;
     public Transform LightSource;
 
-    private float health = 100;
     // Enemy's field of view angle and vision range.
     public float FieldOfViewAngle = 360f;
     public float VisionRange = 70f;
