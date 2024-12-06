@@ -16,12 +16,17 @@ public class Player : MonoBehaviour
     private bool isCarryingLight = false;
     private Vector3 lastMoveDir;
     private Vector2 inputVector;
+    private bool inTriggerZone = false;
 
     private float timeToPermaDeath = 7;
     private float elapsedTime = 0;
     private bool isAlive = true;
     
     private CapsuleCollider collider;
+
+    public bool InTriggerZone { get => inTriggerZone; set => inTriggerZone = value; }
+    public int GetPlayerNumber { get => playerNumber; }
+
 
     private void Awake()
     {
@@ -38,7 +43,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (health > 0)
+        if (!inTriggerZone && health > 0)
         {
             HandleMovement();
             HandleInteraction();
