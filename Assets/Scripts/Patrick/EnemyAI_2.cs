@@ -11,6 +11,7 @@ public class EnemyAI_2 : MonoBehaviour
     public float DelayBetweenTargets = 2.0f; // Tid mellem målskift
     private Transform currentTarget;
     private Coroutine searchCoroutine;
+    private float health = 100;
 
     void Start()
     {
