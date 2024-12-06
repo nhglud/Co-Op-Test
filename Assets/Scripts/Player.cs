@@ -24,14 +24,18 @@ public class Player : MonoBehaviour
     
     private CapsuleCollider collider;
 
+<<<<<<< HEAD
+    public bool InTriggerZone { get => inTriggerZone; set => inTriggerZone = value; }
+    public int GetPlayerNumber { get => playerNumber; }
+
+
+=======
+>>>>>>> 58ef4691b04f28ae8bcc8392d59251bb94556aa3
     private void Awake()
     {
         collider = GetComponent<CapsuleCollider>();
 
         
-    public bool InTriggerZone { get => inTriggerZone; set => inTriggerZone = value; }
-    public int GetPlayerNumber { get => playerNumber; }
-
 
     }
 
