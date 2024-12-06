@@ -7,6 +7,9 @@ public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance { get; private set; }
 
+    [SerializeField] GameObject weaponSelectionScene;
+
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -24,7 +27,7 @@ public class SceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -37,6 +40,12 @@ public class SceneManager : MonoBehaviour
 
     public void StartGame ()
     {
+        Time.timeScale = 1;
+        if (weaponSelectionScene != null)
+        {
+            weaponSelectionScene.SetActive(false);
+        }
+        
         print("start Game");
     }
 

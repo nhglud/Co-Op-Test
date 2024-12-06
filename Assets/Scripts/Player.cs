@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         collider = GetComponent<CapsuleCollider>();
+
+        WeaponManager.Instance.SetPlayer(playerNumber == 1 ? true : false, this.gameObject);
+
     }
 
     private void Update()

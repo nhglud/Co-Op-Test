@@ -7,8 +7,11 @@ public class WeaponManager : MonoBehaviour
 
     public static WeaponManager Instance { get; private set; }
 
-    [SerializeField] GunAuto player1;
-    [SerializeField] GunAuto player2;
+    private GameObject player1;
+    private GameObject player2; 
+    
+    private GunAuto gunAutoplayer1;
+    private GunAuto gunAutoplayer2;
 
 
 
@@ -40,9 +43,26 @@ public class WeaponManager : MonoBehaviour
     }
 
 
-    public void SetPlayerWeapon ()
+    public void setWeapon(bool isPlayerOne, GunAuto.weapons weapon)
     {
-        player1.SetPistol();
+        if (isPlayerOne)
+        {
+            gunAutoplayer1.setWeapon(weapon);
+        }
+
+        else
+        {
+            gunAutoplayer1.setWeapon(weapon);
+        }
+
+    }
+
+    public void SetPlayer (bool isPlayerOne, GameObject player)
+    {
+        if (isPlayerOne) 
+        {
+            gunAutoplayer1 = player.GetComponent<GunAuto>();
+        }
     }
 
 }
