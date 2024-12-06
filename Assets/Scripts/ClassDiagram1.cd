@@ -8,7 +8,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAwCAAEAECACAAAAAAgAAgQAABAAAAABABFIECABAEg=</HashCode>
+      <HashCode>AAwCAAEAECACAAAAAAgAAgQAABAAAAABABBIECAAAEg=</HashCode>
       <FileName>Assets\Scripts\Player.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -37,7 +37,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQoAAAAACAAQAAFAgAAAABAAAIAAAAAAAAAAAAgAEA=</HashCode>
+      <HashCode>AAQoAAAAACAAQAAFAAAAAABAEAIAAAAAAAAAABAgAEA=</HashCode>
       <FileName>Assets\Scripts\LightSource.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

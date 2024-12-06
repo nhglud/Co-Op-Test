@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 10.0f;
     private float moveDistance;
-    private bool isWalking;
     private bool interactionKeyIsPressed;
     private bool isCarryingLight = false;
     private Vector3 lastMoveDir;
@@ -20,7 +19,6 @@ public class Player : MonoBehaviour
 
     private CapsuleCollider collider;
 
-    public bool IsWalking { get => isWalking; }
 
 
     private void Awake()
@@ -149,12 +147,17 @@ public class Player : MonoBehaviour
             transform.position += moveDistance * moveDir;
         }
 
-        isWalking = moveDir != Vector3.zero;
-        if (moveDir.x > 0 || moveDir.y > 0 || moveDir.z > 0 )
+
+        if (moveDir != Vector3.zero)
         {
             transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
         }
-        
+
+        //if (moveDir.x > 0 || moveDir.y > 0 || moveDir.z > 0 )
+        //{
+        //    transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
+        //}
+
     }
 
     public void setMovementSpeed(float newMoveSpeed)
