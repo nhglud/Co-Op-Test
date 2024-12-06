@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
     private float currenthealth, enemyMaxHealth = 10;
     private Transform target;
 
+    [SerializeField] GunAuto gun;
+
+
     // Start is called before the first frame update
     void Start()
     {

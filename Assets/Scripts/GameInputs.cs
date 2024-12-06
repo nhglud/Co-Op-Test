@@ -23,7 +23,6 @@ public class GameInputs : MonoBehaviour
         return playerInputActions.Player2.Interact.triggered;
     }
 
-
     public Vector2 GetPlayer1MovementVectorNormalized()
     {
         return playerInputActions.Player1.Move.ReadValue<Vector2>().normalized;

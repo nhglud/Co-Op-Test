@@ -6,29 +6,38 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInputs gameInputs;
     [SerializeField] private LightSource lightSource;
 
-    private float health = 100;
+    [SerializeField] private float health = 100;
 
     private float interactionRange = 1.5f;
     private float moveSpeed = 5.0f;
     private float rotationSpeed = 10.0f;
     private float moveDistance;
-    private bool isWalking;
     private bool interactionKeyIsPressed;
     private bool isCarryingLight = false;
     private Vector3 lastMoveDir;
     private Vector2 inputVector;
     private bool inTriggerZone = false;
 
+    private float timeToPermaDeath = 7;
+    private float elapsedTime = 0;
+    private bool isAlive = true;
+    
     private CapsuleCollider collider;
-
-    public bool InTriggerZone { get => inTriggerZone; set => inTriggerZone = value; }
-    public int GetPlayerNumber { get => playerNumber; }
-    public bool IsWalking { get => isWalking; }
-
 
     private void Awake()
     {
         collider = GetComponent<CapsuleCollider>();
+
+        
+    public bool InTriggerZone { get => inTriggerZone; set => inTriggerZone = value; }
+    public int GetPlayerNumber { get => playerNumber; }
+
+
+    }
+
+    private void Start()
+    {
+        WeaponManager.Instance.SetPlayer(playerNumber == 1 ? true : false, this.gameObject);
     }
 
     private void Update()
@@ -37,20 +46,32 @@ public class Player : MonoBehaviour
         {
             HandleMovement();
             HandleInteraction();
+            ColdDamage();
+        }
+        else
+        {
+            // If the players health reaches zero
+            // we start a count down until permadeath 
+            Debug.Log("Player is Down");
+            elapsedTime += Time.deltaTime;
+            if(elapsedTime > timeToPermaDeath)
+            {
+                isAlive = false;
+                Debug.Log("Player is Dead");
+            }
         }
 
-        ColdDamage();
     }
 
     private void ColdDamage()
     {
+        // When the player is out of range of the light they start taking damage.
         float distanceToLight = Vector3.Distance(transform.position, lightSource.transform.position);
-        if (distanceToLight > lightSource.getLightRange() && health > 0)
+        if (distanceToLight > lightSource.getLightRadius() && health > 0)
         {
             health -= 0.5f;
         }
     }
-
 
     private void HandleInteraction()
     {
@@ -64,9 +85,12 @@ public class Player : MonoBehaviour
             foreach (var c in colliderArray)
             {
                 // revive player
-                if (c.TryGetComponent(out Player otherPlayer) && otherPlayer.health <= 0)
+                if (c.TryGetComponent(out Player otherPlayer) && 
+                    otherPlayer.isAlive && 
+                    otherPlayer.health <= 0)
                 {
                     otherPlayer.health = 100;
+                    Debug.Log("Player was revived");
                 }
 
                 // pick up light
@@ -88,7 +112,6 @@ public class Player : MonoBehaviour
             isCarryingLight = false;
         }
 
-
         if (isCarryingLight)
         {
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactionRange);
@@ -105,8 +128,6 @@ public class Player : MonoBehaviour
         }
 
     }
-
-
 
     private bool InContact(Vector3 moveDir)
     {
@@ -156,8 +177,11 @@ public class Player : MonoBehaviour
             transform.position += moveDistance * moveDir;
         }
 
-        isWalking = moveDir != Vector3.zero;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
+
+        if (moveDir != Vector3.zero)
+        {
+            transform.forward = Vector3.Slerp(transform.forward, moveDir, rotationSpeed * Time.deltaTime);
+        }
     }
 
     public void setMovementSpeed(float newMoveSpeed)

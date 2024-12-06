@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-
     public void pickUpInteraction()
     {
         Destroy(gameObject);
