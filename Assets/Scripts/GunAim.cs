@@ -28,6 +28,7 @@ public class GunAim : MonoBehaviour
         }
         else
         {
+            print("EnemyInsight");
             GameObject enemy = UpdateClosestEnemy();
 
             return (enemy.transform.position - playerTrans.position);
