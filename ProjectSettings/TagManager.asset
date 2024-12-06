@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - LightSource
+  - sniper
+  - pistol
+  - minigun
   layers:
   - Default
   - TransparentFX

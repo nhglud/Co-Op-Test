@@ -18,19 +18,26 @@ public class GunAuto : MonoBehaviour
     public float bulletdamage;
 
     public float Weight { get => weight; set => weight = value; }
-    public float Bulletdamage { get => bulletdamage; set => bulletdamage = value; }
+
+    public int DamageSniper { get => damageSniper;  }
+    public int DamagePistol { get => damagePistol;  }
+    public int DamageMinigun { get => damageMinigun; }
 
     [SerializeField] Player player1;
 
     public enum weapons {sniper, pistol, minigun};
-    [SerializeField] weapons selectStartWeapon;
+    [SerializeField] weapons currentWeapon;
 
+    private int damageSniper = 10;
+    private int damagePistol = 5;
+    private int damageMinigun = 1;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        setWeapon(selectStartWeapon);
+        setWeapon(currentWeapon);
         UpdatePlayerMoveSpeed();
     }
 
@@ -73,7 +80,8 @@ public class GunAuto : MonoBehaviour
         fireRate = 0.5f;
         bulletspeed = 20; // speed of the bullet
         weight = 2.5f;
-        bulletdamage = 10;
+        bulletdamage = DamageSniper;
+        currentWeapon = weapons.sniper;
     }
 
     public void SetPistol()
@@ -81,7 +89,8 @@ public class GunAuto : MonoBehaviour
         fireRate = 2;
         bulletspeed = 20; // speed of the bullet
         weight = 5;
-        bulletdamage = 1;
+        bulletdamage = DamagePistol;
+        currentWeapon = weapons.pistol;
     }
 
     public void SetMinigun()
@@ -89,7 +98,8 @@ public class GunAuto : MonoBehaviour
         fireRate = 6;
         bulletspeed = 20; // speed of the bullet
         weight = 1;
-        bulletdamage = 5;
+        bulletdamage = DamageMinigun;
+        currentWeapon = weapons.minigun;
     }
 
 
@@ -100,6 +110,7 @@ public class GunAuto : MonoBehaviour
         //Instatiate a bullet at the bulletspawn
         GameObject bulletshot = Instantiate(bullet, bulletspawn.transform);
         bulletshot.gameObject.transform.parent = null;
+        bulletshot.tag = currentWeapon.ToString();
 
         Vector3 aimDir = gunAim.updateAimDirection();
 

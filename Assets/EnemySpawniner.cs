@@ -36,6 +36,6 @@ public class EnemySpawniner : MonoBehaviour
         int randomInt = Random.RandomRange(0, spawner.Length); // Get a random index within the array
         Transform randomSpawner = spawner[randomInt];
         Instantiate(enemyAI, randomSpawner.position, randomSpawner.rotation);
-
+        
     }
 }
