@@ -81,7 +81,7 @@ public class GunAuto : MonoBehaviour
         fireRate = 2;
         bulletspeed = 20; // speed of the bullet
         weight = 5;
-        bulletdamage = 1;
+        bulletdamage = 5;
     }
 
     public void SetMinigun()
@@ -89,7 +89,7 @@ public class GunAuto : MonoBehaviour
         fireRate = 6;
         bulletspeed = 20; // speed of the bullet
         weight = 1;
-        bulletdamage = 5;
+        bulletdamage = 1;
     }
 
 
