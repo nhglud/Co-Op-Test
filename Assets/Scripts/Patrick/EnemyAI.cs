@@ -7,8 +7,9 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform Player;
     public Transform Player2;
-    public Transform LightSource;   
+    public Transform LightSource;
 
+    private float health = 100;
     // Enemy's field of view angle and vision range.
     public float FieldOfViewAngle = 360f;
     public float VisionRange = 70f;
@@ -97,6 +98,14 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) >= SpaceBetween)
         {
             transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Oh no i got shot!");
         }
     }
 }

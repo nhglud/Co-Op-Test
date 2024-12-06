@@ -99,12 +99,14 @@ public class GunAuto : MonoBehaviour
     {
         //Instatiate a bullet at the bulletspawn
         GameObject bulletshot = Instantiate(bullet, bulletspawn.transform);
+        bulletshot.gameObject.transform.parent = null;
 
         Vector3 aimDir = gunAim.updateAimDirection();
 
         if (aimDir.x > 0 || aimDir.y > 0 || aimDir.z > 0)
         {
             bulletspawn.transform.forward = aimDir;
+            
         }
         
 
