@@ -10,6 +10,10 @@ public class GunAuto : MonoBehaviour
     public float bulletspeed = 20; // speed of the bullet
 
     private float nextbullet; // tracking for the next shoot
+
+
+    [SerializeField] GunAim gunAim;
+
     public float weight;
     public float bulletdamage;
 
@@ -21,9 +25,11 @@ public class GunAuto : MonoBehaviour
     [SerializeField] Enemy enemy;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
+        
         UpdatePlayerMoveSpeed();
     }
 
@@ -45,6 +51,14 @@ public class GunAuto : MonoBehaviour
     {
         //Instatiate a bullet at the bulletspawn
         GameObject bulletshot = Instantiate(bullet, bulletspawn.transform);
+
+        Vector3 aimDir = gunAim.updateAimDirection();
+
+        if (aimDir.x > 0 || aimDir.y > 0 || aimDir.z > 0)
+        {
+            bulletspawn.transform.forward = aimDir;
+        }
+        
 
         //Add velocity
         bulletshot.GetComponent<Rigidbody>().velocity = bulletspawn.transform.forward.normalized * bulletspeed;

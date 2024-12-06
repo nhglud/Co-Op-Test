@@ -13,8 +13,12 @@ GameObject:
   - component: {fileID: 5735907545865377471}
   - component: {fileID: 2265628942294230241}
   - component: {fileID: 8950373355828395478}
+<<<<<<< HEAD
+  m_Layer: 3
+=======
   - component: {fileID: -4186653639302459429}
   m_Layer: 0
+>>>>>>> 0f7d2610526b61243cab23f4538d94dd2e4656d0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +120,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7173599789387182207}
-  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d30e0fdecf63c6a4194b8548a02eef34, type: 3}
   m_Name: 
