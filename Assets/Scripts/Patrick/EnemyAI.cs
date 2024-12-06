@@ -7,42 +7,51 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform Player;
     public Transform Player2;
-    public Transform LightSource;   
+    public Transform LightSource;
 
-    // Enemy's field of view angle and vision range.
-    public float FieldOfViewAngle = 360f;
-    public float VisionRange = 70f;
-
+    public float FieldOfViewAngle = 90f;
+    public float VisionRange = 10f;
     public float SpaceBetween = 1f;
-    public float MoveSpeed = 5f;
+    public float MoveSpeed = 3f;
 
-    // Current target (player or light source)
+    public float TargetSwitchDelay = 2f; // Time in seconds to wait before switching target
+
     private Transform currentTarget;
-    
+    private Coroutine targetSwitchCoroutine;
 
-    // Update is called once per frame
     void Update()
     {
-        // Check if the enemy can see any of the players
         bool canSeePlayer1 = IsInFieldOfView(Player);
         bool canSeePlayer2 = IsInFieldOfView(Player2);
 
         if (canSeePlayer1 || canSeePlayer2)
         {
-            // If any player is visible, set the current target to the closest visible player
-            currentTarget = GetClosestTarget(
-                canSeePlayer1 ? Player : null,
-                canSeePlayer2 ? Player2 : null
-            );
+            Transform closestTarget = GetClosestTarget(canSeePlayer1 ? Player : null, canSeePlayer2 ? Player2 : null);
+            if (currentTarget != closestTarget)
+            {
+                if (targetSwitchCoroutine != null) StopCoroutine(targetSwitchCoroutine);
+                targetSwitchCoroutine = StartCoroutine(SwitchTargetWithDelay(closestTarget));
+            }
         }
-        else if (currentTarget == null || !IsInFieldOfView(currentTarget))
+        else
         {
-            // If no players are visible, switch the target to the light source
-            currentTarget = LightSource;
+            if (currentTarget == null || !IsInFieldOfView(currentTarget))
+            {
+                if (targetSwitchCoroutine == null)
+                {
+                    targetSwitchCoroutine = StartCoroutine(SwitchTargetWithDelay(LightSource));
+                }
+            }
         }
 
-        // Move the enemy toward the current target
         MoveTowards(currentTarget);
+    }
+
+    IEnumerator SwitchTargetWithDelay(Transform newTarget)
+    {
+        yield return new WaitForSeconds(TargetSwitchDelay);
+        currentTarget = newTarget;
+        targetSwitchCoroutine = null; // Reset coroutine reference
     }
 
     bool IsInFieldOfView(Transform target)
@@ -55,10 +64,8 @@ public class EnemyAI : MonoBehaviour
         if (distanceToTarget <= VisionRange)
         {
             float angleToTarget = Vector3.Angle(transform.forward, directionToTarget);
-
             if (angleToTarget <= FieldOfViewAngle / 2f)
             {
-                // Check for line of sight to the target
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, directionToTarget.normalized, out hit, VisionRange))
                 {
@@ -86,17 +93,45 @@ public class EnemyAI : MonoBehaviour
 
         Vector3 direction = (target.position - transform.position).normalized;
 
-        // Ensure the enemy looks in the movement direction
         if (direction != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * MoveSpeed);
         }
 
-        // Move the enemy forward
         if (Vector3.Distance(transform.position, target.position) >= SpaceBetween)
         {
             transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        // Tjekker om objektet, som enemy rammer, har tag'en "Player" eller "LightSource"
+        if (other.CompareTag("Player") || other.CompareTag("LightSource"))
+        {
+            // Find alle objekter med tagget "Player" eller "LightSource"
+            GameObject[] allObjects = GameObject.FindGameObjectsWithTag(other.tag);
+
+            GameObject closestObject = null;
+            float closestDistance = Mathf.Infinity;
+
+            // Loop igennem alle objekter og find den nærmeste
+            foreach (GameObject obj in allObjects)
+            {
+                float distance = Vector3.Distance(transform.position, obj.transform.position);
+
+                if (distance < closestDistance)
+                {
+                    closestObject = obj;
+                    closestDistance = distance;
+                }
+            }
+
+            // Destruer den nærmeste objekt
+            if (closestObject != null)
+            {
+                Destroy(closestObject);
+            }
         }
     }
 }
