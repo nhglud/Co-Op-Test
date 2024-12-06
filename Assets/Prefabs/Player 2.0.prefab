@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5487737243605334520}
   - component: {fileID: 6778623881864525765}
   - component: {fileID: 1043317702021987042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SynergyZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 2822317616463975689}
   - component: {fileID: 5010870115299439938}
   - component: {fileID: 6149061054366762201}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 7599494931433845017}
   - component: {fileID: 187889515481334064}
   - component: {fileID: 883579560041829445}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 9197690187668882735}
   - component: {fileID: 2348206415978732260}
   - component: {fileID: 7422802667175451791}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,15 +493,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7581380640883855744}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.578, y: 0.874, z: 0.327}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0, y: 0.6, z: 0.327}
   m_LocalScale: {x: 0.1939, y: 0.25180584, z: 0.7677}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7018391563546364908}
   - {fileID: 4971284007454715211}
   m_Father: {fileID: 7489189073397993124}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &668201368929322723
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -585,15 +585,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b072a5bb970cca4cbc2dd660426c8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 3233755031190026102, guid: 0ce87f3090c02694cb8ec3ec2b6c908a, type: 3}
   bulletspawn: {fileID: 8317526822178071432}
-  fireRate: 0
+  fireRate: 13
   bulletspeed: 20
   gunAim: {fileID: 6149061054366762201}
   weight: 0
   bulletdamage: 0
   player1: {fileID: 7199983825145600631}
-  selectStartWeapon: 0
+  selectStartWeapon: 2
 --- !u!1 &7835447214026571609
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 7489189073397993124}
   - component: {fileID: 7199983825145600631}
   - component: {fileID: -8512659303836412213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player 2.0
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ MonoBehaviour:
   playerNumber: 1
   gameInputs: {fileID: 0}
   lightSource: {fileID: 0}
-  health: 100
+  health: 1000000
 --- !u!136 &-8512659303836412213
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -680,7 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4971284007454715211}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet spawn point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 2447846882856308650}
   - component: {fileID: 1059883880427718080}
   - component: {fileID: 8532868648685815915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: goggles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
