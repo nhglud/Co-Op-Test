@@ -29,8 +29,13 @@ public class Player : MonoBehaviour
     {
         collider = GetComponent<CapsuleCollider>();
 
-        WeaponManager.Instance.SetPlayer(playerNumber == 1 ? true : false, this.gameObject);
+        
 
+    }
+
+    private void Start()
+    {
+        WeaponManager.Instance.SetPlayer(playerNumber == 1 ? true : false, this.gameObject);
     }
 
     private void Update()
