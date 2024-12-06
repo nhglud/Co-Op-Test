@@ -311,6 +311,12 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &698159230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7827711664668253874, guid: a9dd2cc38d0cd514a81b1714162d07c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3722186451614713999}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &950804147
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +989,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1867820499}
     m_Modifications:
+    - target: {fileID: 918596196046837629, guid: a9dd2cc38d0cd514a81b1714162d07c0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 698159230}
     - target: {fileID: 3469886360459101387, guid: a9dd2cc38d0cd514a81b1714162d07c0,
         type: 3}
       propertyPath: isPlayer1
