@@ -72,7 +72,7 @@ public class GunAuto : MonoBehaviour
     {
         fireRate = 0.5f;
         bulletspeed = 20; // speed of the bullet
-        weight = 8;
+        weight = 2.5f;
         bulletdamage = 10;
     }
 
@@ -80,7 +80,7 @@ public class GunAuto : MonoBehaviour
     {
         fireRate = 2;
         bulletspeed = 20; // speed of the bullet
-        weight = 6;
+        weight = 5;
         bulletdamage = 1;
     }
 
@@ -88,7 +88,7 @@ public class GunAuto : MonoBehaviour
     {
         fireRate = 6;
         bulletspeed = 20; // speed of the bullet
-        weight = 10;
+        weight = 1;
         bulletdamage = 5;
     }
 
