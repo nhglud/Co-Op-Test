@@ -17,8 +17,12 @@ public class Player : MonoBehaviour
     private Vector3 lastMoveDir;
     private Vector2 inputVector;
 
-    private CapsuleCollider collider;
+    private float timeToPermaDeath = 7;
+    private float elapsedTime = 0;
+    private bool isAlive = true;
+    //public bool IsAlive { get => isAlive; }
 
+    private CapsuleCollider collider;
 
 
     private void Awake()
@@ -30,11 +34,24 @@ public class Player : MonoBehaviour
     {
         if (health > 0)
         {
+            Debug.Log(isAlive);
             HandleMovement();
             HandleInteraction();
+            ColdDamage();
+        }
+        else
+        {
+            // If the players health reaches zero
+            // we start a count down until permadeath 
+            Debug.Log("is Down");
+            elapsedTime += Time.deltaTime;
+            if(elapsedTime > timeToPermaDeath)
+            {
+                isAlive = false;
+                Debug.Log(isAlive);
+            }
         }
 
-        ColdDamage();
     }
 
     private void ColdDamage()
@@ -58,7 +75,7 @@ public class Player : MonoBehaviour
             foreach (var c in colliderArray)
             {
                 // revive player
-                if (c.TryGetComponent(out Player otherPlayer) && otherPlayer.health <= 0)
+                if (c.TryGetComponent(out Player otherPlayer) && otherPlayer.isAlive && otherPlayer.health <= 0)
                 {
                     otherPlayer.health = 100;
                 }
