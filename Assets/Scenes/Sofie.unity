@@ -612,20 +612,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4186653639302459429, guid: dd44b702e3b49c2468d79eb55d04534a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7173599789387182207, guid: dd44b702e3b49c2468d79eb55d04534a,
         type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7173599789387182207, guid: dd44b702e3b49c2468d79eb55d04534a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950373355828395478, guid: dd44b702e3b49c2468d79eb55d04534a,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1810841178}
     - target: {fileID: 8950373355828395478, guid: dd44b702e3b49c2468d79eb55d04534a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9007398584527727940, guid: dd44b702e3b49c2468d79eb55d04534a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4144363
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 9007398584527727940, guid: dd44b702e3b49c2468d79eb55d04534a,
         type: 3}
@@ -635,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 9007398584527727940, guid: dd44b702e3b49c2468d79eb55d04534a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.72381
+      value: 15.2
       objectReference: {fileID: 0}
     - target: {fileID: 9007398584527727940, guid: dd44b702e3b49c2468d79eb55d04534a,
         type: 3}
@@ -677,18 +692,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd44b702e3b49c2468d79eb55d04534a, type: 3}
---- !u!114 &953201320 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8950373355828395478, guid: dd44b702e3b49c2468d79eb55d04534a,
-    type: 3}
-  m_PrefabInstance: {fileID: 953201319}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30e0fdecf63c6a4194b8548a02eef34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1002731414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -904,9 +907,8 @@ MonoBehaviour:
   fireRate: 6
   bulletspeed: 20
   weight: 6
-  bulletdamage: 0
+  bulletdamage: 10
   player1: {fileID: 0}
-  enemy: {fileID: 0}
 --- !u!1 &1491548779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,9 +1051,8 @@ MonoBehaviour:
   fireRate: 2
   bulletspeed: 20
   weight: 2
-  bulletdamage: 0
+  bulletdamage: 10
   player1: {fileID: 1781994285}
-  enemy: {fileID: 0}
 --- !u!1 &1526537930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,9 +1251,8 @@ MonoBehaviour:
   fireRate: 0.5
   bulletspeed: 20
   weight: 4
-  bulletdamage: 0
+  bulletdamage: 10
   player1: {fileID: 187014422}
-  enemy: {fileID: 953201320}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
