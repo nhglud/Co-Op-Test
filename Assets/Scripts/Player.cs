@@ -32,8 +32,7 @@ public class Player : MonoBehaviour
     {
         collider = GetComponent<CapsuleCollider>();
 
-        
-
+ 
     }
 
     private void Start()
